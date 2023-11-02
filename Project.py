@@ -40,9 +40,10 @@ def category_menu():
     print("\n\033[94mCategory Menu\033[0m")
     print("1. Add a category")
     print("2. Update a category")
-    print("3. Display all categories")
-    print("4. Delete a category")
-    print("5. Main Menu")
+    print("3. Display a category")
+    print("4. Display all categories")
+    print("5. Delete a category")
+    print("6. Main Menu")
     choice = input("Enter number of your choice: ")
     return choice
 
