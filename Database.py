@@ -75,34 +75,33 @@ class Database:
 
     def reset_database(self):
         # Remove existing tables if they exist
-        self.cursor.execute("""
-            DROP TABLE IF EXISTS recipes;
-            DROP TABLE IF EXISTS ingredients;
-            DROP TABLE IF EXISTS recipe_ingredients;
-            DROP TABLE IF EXISTS categories;
-            DROP TABLE IF EXISTS users;
-        """)
+        tables_to_drop = ["recipes", "ingredients", "recipe_ingredients", "categories", "users"]
+        for table in tables_to_drop:
+            self.cursor.execute(f"DROP TABLE IF EXISTS {table};")
 
-        # Create new tables
+        # Create new empty tables
         self.cursor.execute("""
             CREATE TABLE categories (
                 category_id INTEGER PRIMARY KEY,
                 category_name TEXT UNIQUE NOT NULL,
                 category_description TEXT
             );
-
+        """)
+        self.cursor.execute("""
             CREATE TABLE ingredients (
                 ingredient_id INTEGER PRIMARY KEY,
                 name TEXT UNIQUE NOT NULL
             );
-
+        """)
+        self.cursor.execute("""
             CREATE TABLE users (
                 user_id INTEGER PRIMARY KEY,
                 username TEXT UNIQUE NOT NULL,
                 password TEXT NOT NULL,
-                email TEXT UNIQUE NOT NULL,
+                email TEXT UNIQUE NOT NULL
             );
-
+        """)
+        self.cursor.execute("""
             CREATE TABLE recipes (
                 recipe_id INTEGER PRIMARY KEY,
                 name TEXT UNIQUE NOT NULL,
@@ -110,17 +109,22 @@ class Database:
                 prep_time INTEGER,
                 cook_time INTEGER,
                 image_url TEXT,
-                FOREIGN KEY(category_id) REFERENCES categories(id)
-            );
-
-            CREATE TABLE recipe_ingredients (
-                FOREIGN KEY(recipe_id) REFERENCES recipes(recipe_id),
-                FOREIGN KEY(ingredient_id) REFERENCES ingredients(ingredient_id),
-                quantity INTEGER NOT NULL,
-                unit TEXT NOT NULL,
-                PRIMARY KEY(recipe_id, ingredient_id)
+                category_id INTEGER,
+                FOREIGN KEY(category_id) REFERENCES categories(category_id)
             );
         """)
+        self.cursor.execute("""
+            CREATE TABLE recipe_ingredients (
+                recipe_id INTEGER,
+                ingredient_id INTEGER,
+                quantity INTEGER NOT NULL,
+                unit TEXT NOT NULL,
+                PRIMARY KEY(recipe_id, ingredient_id),
+                FOREIGN KEY(recipe_id) REFERENCES recipes(recipe_id),
+                FOREIGN KEY(ingredient_id) REFERENCES ingredients(ingredient_id)
+            );
+        """)
+
         self.conn.commit()
         print("\nDatabase reset successfully.")
 

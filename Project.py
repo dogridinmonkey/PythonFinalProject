@@ -1,4 +1,5 @@
 from Tables import Recipe, Ingredient, Category, User
+import Database as db
 
 
 def main_menu():
@@ -7,7 +8,8 @@ def main_menu():
     print("2. Ingredients")
     print("3. Categories")
     print("4. Users")
-    print("5. Exit")
+    print("5. Settings")
+    print("6. Exit")
     choice = input("Enter number of your choice: ")
     return choice
 
@@ -57,6 +59,15 @@ def user_menu():
     print("5. Delete a user")
     print("6. Main Menu")
     choice = input("Enter number of your choice: ")
+    return choice
+
+
+def settings_menu():
+    print("\n\033[94m** Settings Menu **\033[0m")
+    print("1. Load CSV")
+    print("2. Reset Database")
+    print("3. Return to Main Menu")
+    choice = input("Enter your choice: ")
     return choice
 
 
@@ -161,6 +172,21 @@ def main():
                 else:
                     print("Invalid choice")
         elif main_choice == "5":
+            while True:
+                settings_choice = settings_menu()
+                d = db.Database("recipeDB.sqlite")
+                if settings_choice == "1":
+                    csv_file = input("Enter the path to the CSV file: ")
+                    table = input("Enter the name of the table to populate: ")
+                    d.populate_from_csv(table, csv_file)
+                elif settings_choice == "2":
+                    d.reset_database()
+                elif settings_choice == "3":
+                    print("Returning to main menu...")
+                    break
+                else:
+                    print("Invalid choice")
+        elif main_choice == "6":
             print("Exiting...")
             break
         else:
