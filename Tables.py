@@ -18,8 +18,16 @@ class User(db.Database):
         values = []
         print("Please enter the following details: ")
         for field in fields:
-            value = input(f"{field}: ")
-            values.append(value)
+            while True:
+                value = input(f"{field.title()}: ")
+                if field == 'username':
+                    self.cursor.execute(f"SELECT * FROM users WHERE username = ?", (value,))
+                    record = self.cursor.fetchone()
+                    if record is not None:
+                        print("A user with this username already exists. Please enter a unique username.")
+                        continue
+                values.append(value)
+                break
         return fields, values
 
     def create_user(self, username, password):
@@ -46,7 +54,7 @@ class Recipe(db.Database):
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS recipes (
                 recipe_id INTEGER PRIMARY KEY,
-                name TEXT NOT NULL,
+                name TEXT UNIQUE NOT NULL,
                 instructions TEXT NOT NULL,
                 prep_time TEXT,
                 cook_time TEXT,
@@ -61,8 +69,16 @@ class Recipe(db.Database):
         values = []
         print("Please enter the following details: ")
         for field in fields:
-            value = input(f"{field}: ")
-            values.append(value)
+            while True:
+                value = input(f"{field.title()}: ")
+                if field == 'name':
+                    self.cursor.execute(f"SELECT * FROM recipes WHERE name = ?", (value,))
+                    record = self.cursor.fetchone()
+                    if record is not None:
+                        print("A recipe with this name already exists. Please enter a unique name.")
+                        continue
+                values.append(value)
+                break
         return fields, values
 
 
@@ -81,8 +97,16 @@ class Ingredient(db.Database):
         values = []
         print("Please enter the following details: ")
         for field in fields:
-            value = input(f"{field}: ")
-            values.append(value)
+            while True:
+                value = input(f"{field.title()}: ")
+                if field == 'name':
+                    self.cursor.execute(f"SELECT * FROM your_table WHERE name = ?", (value,))
+                    record = self.cursor.fetchone()
+                    if record is not None:
+                        print("A record with this name already exists. Please enter a unique name.")
+                        continue
+                values.append(value)
+                break
         return fields, values
 
 
@@ -106,7 +130,7 @@ class RecipeIngredient(db.Database):
         values = []
         print("Please enter the following details: ")
         for field in fields:
-            value = input(f"{field}: ")
+            value = input(f"{field.title()}: ")
             values.append(value)
         return fields, values
 
@@ -126,6 +150,14 @@ class Category(db.Database):
         values = []
         print("Please enter the following details: ")
         for field in fields:
-            value = input(f"{field}: ")
-            values.append(value)
+            while True:
+                value = input(f"{field.title()}: ")
+                if field == 'name':
+                    self.cursor.execute(f"SELECT * FROM your_table WHERE name = ?", (value,))
+                    record = self.cursor.fetchone()
+                    if record is not None:
+                        print("A record with this name already exists. Please enter a unique name.")
+                        continue
+                values.append(value)
+                break
         return fields, values

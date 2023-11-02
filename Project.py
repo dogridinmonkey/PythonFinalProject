@@ -16,9 +16,10 @@ def recipe_menu():
     print("\n\033[94mRecipe Menu\033[0m")
     print("1. Add a recipe")
     print("2. Update a recipe")
-    print("3. Display all recipes")
-    print("4. Delete a recipe")
-    print("5. Main Menu")
+    print("3. Display a recipe")
+    print("4. Display all recipes")
+    print("5. Delete a recipe")
+    print("6. Main Menu")
     choice = input("Enter number of your choice: ")
     return choice
 
@@ -27,9 +28,10 @@ def ingredient_menu():
     print("\n\033[94mIngredient Menu\033[0m")
     print("1. Add an ingredient")
     print("2. Update an ingredient")
-    print("3. Display all ingredients")
-    print("4. Delete an ingredient")
-    print("5. Main Menu")
+    print("3. Display an ingredient")
+    print("4. Display all ingredients")
+    print("5. Delete an ingredient")
+    print("6. Main Menu")
     choice = input("Enter number of your choice: ")
     return choice
 
@@ -49,9 +51,10 @@ def user_menu():
     print("\n\033[94mUser Menu\033[0m")
     print("1. Add a user")
     print("2. Update a user")
-    print("3. Display all users")
-    print("4. Delete a user")
-    print("5. Main Menu")
+    print("3. Display a user")
+    print("4. Display all users")
+    print("5. Delete a user")
+    print("6. Main Menu")
     choice = input("Enter number of your choice: ")
     return choice
 
@@ -73,11 +76,13 @@ def main():
                     r.update_record('recipes', 'recipe_id', recipe_id, fields, values)
                 elif recipe_choice == "3":
                     recipe_id = input("Enter the id of the recipe to display: ")
-                    print(r.read_record('recipes', 'recipe_id', recipe_id))
+                    r.read_record('recipes', 'recipe_id', recipe_id)
                 elif recipe_choice == "4":
+                    r.read_all_records('recipes')
+                elif recipe_choice == "5":
                     recipe_id = input("Enter the id of the recipe to delete: ")
                     r.delete_record('recipes', 'recipe_id', recipe_id)
-                elif recipe_choice == "5":
+                elif recipe_choice == "6":
                     print("Returning to main menu...")
                     break
                 else:
@@ -95,11 +100,13 @@ def main():
                     i.update_record('ingredients', 'ingredient_id', ingredient_id, fields, values)
                 elif ingredient_choice == "3":
                     ingredient_id = input("Enter the id of the ingredient to display: ")
-                    print(i.read_record('ingredients', 'ingredient_id', ingredient_id))
+                    i.read_record('ingredients', 'ingredient_id', ingredient_id)
                 elif ingredient_choice == "4":
+                    i.read_all_records('ingredients')
+                elif ingredient_choice == "5":
                     ingredient_id = input("Enter the id of the ingredient to delete: ")
                     i.delete_record('ingredients', 'ingredient_id', ingredient_id)
-                elif ingredient_choice == "5":
+                elif ingredient_choice == "6":
                     print("Returning to main menu...")
                     break
                 else:
@@ -117,11 +124,13 @@ def main():
                     c.update_record('categories', 'category_id', category_id, fields, values)
                 elif category_choice == "3":
                     category_id = input("Enter the id of the category to display: ")
-                    print(c.read_record('categories', 'category_id', category_id))
+                    c.read_record('categories', 'category_id', category_id)
                 elif category_choice == "4":
+                    c.read_all_records('categories')
+                elif category_choice == "5":
                     category_id = input("Enter the id of the category to delete: ")
                     c.delete_record('categories', 'category_id', category_id)
-                elif category_choice == "5":
+                elif category_choice == "6":
                     print("Returning to main menu...")
                     break
                 else:
@@ -139,11 +148,13 @@ def main():
                     u.update_record('users', 'user_id', user_id, fields, values)
                 elif user_choice == "3":
                     user_id = input("Enter the id of the user to display: ")
-                    print(u.read_record('users', 'user_id', user_id))
+                    u.read_record('users', 'user_id', user_id)
                 elif user_choice == "4":
+                    u.read_all_records('users')
+                elif user_choice == "5":
                     user_id = input("Enter the id of the user to delete: ")
                     u.delete_record('users', 'user_id', user_id)
-                elif user_choice == "5":
+                elif user_choice == "6":
                     print("Returning to main menu...")
                     break
                 else:
