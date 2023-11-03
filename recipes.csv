@@ -1,0 +1,101 @@
+recipe_id,name,instructions,prep_time,cook_time,image_url,category_id
+1,Spaghetti Carbonara,"1. Cook spaghetti according to package instructions
+2. In a skillet; cook pancetta until crispy
+3. In a bowl; whisk eggs and cheese
+4. Drain spaghetti and mix with pancetta
+5. Add egg and cheese mixture
+6. Season with salt and pepper",15,15,https://example.com/spaghetti_carbonara.jpg,1
+2,Chicken Alfredo,"1. Cook fettuccine according to package instructions
+2. Season chicken with salt and pepper; cook until no longer pink
+3. In a saucepan; melt butter and saute garlic
+4. Add cream and cheese; stirring until smooth
+5. Serve chicken and sauce over fettuccine",20,25,https://example.com/chicken_alfredo.jpg,1
+3,Caprese Salad,"1. Slice tomatoes and mozzarella
+2. Arrange them on a plate with basil leaves
+3. Drizzle with balsamic vinegar and olive oil
+4. Season with salt and pepper",10,0,https://example.com/caprese_salad.jpg,2
+4,Beef Stir-Fry,"1. Slice beef into thin strips
+2. Heat oil in a pan; saute garlic and ginger
+3. Add beef; cook until browned
+4. Add broccoli and bell pepper; cook until tender
+5. Pour soy sauce over the stir-fry
+6. Serve over rice",15,15,https://example.com/beef_stir_fry.jpg,3
+5,Chocolate Cake,"1. Preheat oven to 350F 
+2. In a bowl; mix dry ingredients
+3. Add eggs; milk; oil; and vanilla; beat until smooth
+4. Stir in boiling water
+5. Pour batter into greased pans
+6. Bake for 30-35 minutes
+7. Let cool and frost as desired",20,30,https://example.com/chocolate_cake.jpg,4
+6,Margarita Pizza,"1. Preheat oven to 475F
+2. Roll out pizza dough and place on a baking sheet
+3. Spread tomato sauce and mozzarella
+4. Season with salt and pepper
+5. Bake for 12-15 minutes
+6. Top with fresh basil and drizzle with olive oil",10,15,https://example.com/margarita_pizza.jpg,5
+7,Chicken Parmesan,"1. Preheat oven to 375F
+2. Season chicken with salt and pepper
+3. Dip in egg and coat with breadcrumbs
+4. Heat oil in a pan and cook chicken until golden
+5. Place in a baking dish; add sauce and cheese
+6. Bake until cheese is melted
+7. Serve over spaghetti",20,25,https://example.com/chicken_parmesan.jpg,1
+8,Caesar Salad,"1. In a bowl; mix Caesar dressing ingredients
+2. Toss lettuce with dressing
+3. Add croutons and Parmesan
+4. Serve with grilled chicken or shrimp if desired",15,0,https://example.com/caesar_salad.jpg,2
+9,Pancakes,"1. Mix flour; sugar; baking powder; and salt
+2. In a separate bowl; whisk eggs; milk; and melted butter
+3. Combine wet and dry ingredients
+4. Heat a griddle; pour batter; and cook until bubbles appear
+5. Flip and cook until golden",10,10,https://example.com/pancakes.jpg,6
+10,Spicy Tofu Stir-Fry,"1. Press tofu to remove excess water and cut into cubes
+2. Heat oil in a pan; add tofu; and cook until browned
+3. Add vegetables and sauce; cook until heated through
+4. Serve over rice",15,15,https://example.com/tofu_stir_fry.jpg,3
+11,Lasagna,"1. Cook lasagna noodles according to package instructions
+2. In a pan; brown ground beef; onions; and garlic
+3. Add tomato sauce and simmer
+4. In a baking dish; layer noodles; meat sauce; and cheese
+5. Bake until bubbly and golden",25,30,https://example.com/lasagna.jpg,1
+12,Chickpea Curry,"1. In a pan; saute onions; garlic; and ginger
+2. Add spices and chickpeas; cook for a few minutes
+3. Stir in tomatoes and coconut milk. 4. Simmer until the sauce thickens
+5. Serve over rice",15,20,https://example.com/chickpea_curry.jpg,7
+13,Guacamole,"1. Mash avocados in a bowl
+2. Add chopped onions; tomatoes; and cilantro
+3. Squeeze in lime juice and season with salt
+4. Mix well and serve with tortilla chips",10,0,https://example.com/guacamole.jpg,8
+14,Shrimp Scampi Pasta,"1. Cook linguine according to package instructions
+2. In a skillet saute garlic and shrimp
+3. Add wine and lemon juice cook until shrimp turn pink
+4. Toss with linguine parsley and seasonings
+5. Serve hot",15,20,https://example.com/shrimp_scampi.jpg,9
+15,BBQ Ribs,"1. Preheat grill to medium-high heat
+2. Rub ribs with the dry rub
+3. Grill ribs basting with BBQ sauce until cooked through
+4. Serve with extra sauce on the side",15,45,https://example.com/bbq_ribs.jpg,10
+16,Spinach and Feta Stuffed Chicken,"1. Preheat oven to 375F
+2. Cut a pocket in each chicken breast
+3. Stuff with spinach and feta
+4. Rub with olive oil sprinkle with seasonings
+5. Bake until chicken is cooked through",20,25,https://example.com/stuffed_chicken.jpg,1
+17,Vegetable Biryani,"1. Rinse rice and soak for 30 minutes
+2. saute onions; garlic and ginger in ghee
+3. Add vegetables;rice; yogurt; and spices
+4. Cook until rice is tender
+5. Garnish with cilantro",30,30,https://example.com/biryani.jpg,7
+18,Avocado Toast,"1. Toast bread
+2. Mash avocado with lemon juice and seasonings
+ 3. Spread avocado on toast
+4. Top with poached egg if desired",10,0,https://example.com/avocado_toast.jpg,8
+19,Fried Rice,"1. Heat oil in a pan saute garlic
+2. Add chicken peas and carrots
+3. Push ingredients to one side; scramble eggs on the other
+4. Add rice and soy sauce stir-fry until heated through",15,15,https://example.com/fried_rice.jpg,3
+20,Tiramisu Dessert,"1. Whip cream until stiff peaks form
+2. In another bowl combine mascarpone; coffee; and liqueur
+3. Gently fold whipped cream into mascarpone mixture
+4. Layer with ladyfingers and mascarpone mixture
+5. Dust with cocoa powder and grated chocolate
+6. Refrigerate for a few hours before serving",20,0,https://example.com/tiramisu.jpg,4
