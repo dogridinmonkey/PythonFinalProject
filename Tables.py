@@ -8,13 +8,14 @@ class User(db.Database):
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS users (
                 user_id INTEGER PRIMARY KEY,
-                username TEXT UNIQUE NOT NULL,
-                password TEXT NOT NULL
+                username VARCHAR UNIQUE NOT NULL,
+                password VARCHAR NOT NULL,
+                email VARCHAR UNIQUE NOT NULL
             )
         """)
 
     def input_data(self):
-        fields = ['username', 'password']
+        fields = ['username', 'password', 'email']
         values = []
         print("Please enter the following details: ")
         for field in fields:
@@ -30,9 +31,9 @@ class User(db.Database):
                 break
         return fields, values
 
-    def create_user(self, username, password):
+    def create_user(self, username, password, email):
         hashed_password = self.hash_password(password)
-        super().create_record('users', ['username', 'password'], [username, hashed_password])
+        super().create_record('users', ['username', 'password'], [username, hashed_password, email])
 
     @staticmethod
     def hash_password(password):
@@ -54,18 +55,18 @@ class Recipe(db.Database):
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS recipes (
                 recipe_id INTEGER PRIMARY KEY,
-                name TEXT UNIQUE NOT NULL,
-                instructions TEXT NOT NULL,
-                prep_time TEXT,
-                cook_time TEXT,
+                name VARCHAR UNIQUE NOT NULL,
+                instructions VARCHAR,
+                prep_time INTEGER,
+                cook_time INTEGER,
+                image_url VARCHAR,
                 category_id INTEGER,
-                image_url TEXT,
                 FOREIGN KEY (category_id) REFERENCES categories (category_id)
             )
         """)
 
     def input_data(self):
-        fields = ['name', 'instructions', 'prep_time', 'cook_time', 'category_id', 'image_url']
+        fields = ['name', 'instructions', 'prep_time', 'cook_time', 'image_url', 'category_id']
         values = []
         print("Please enter the following details: ")
         for field in fields:
@@ -88,7 +89,7 @@ class Ingredient(db.Database):
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS ingredients (
                 ingredient_id INTEGER PRIMARY KEY,
-                name TEXT UNIQUE NOT NULL
+                name VARCHAR UNIQUE NOT NULL
             )
         """)
 
@@ -117,8 +118,8 @@ class RecipeIngredient(db.Database):
             CREATE TABLE IF NOT EXISTS recipe_ingredients (
                 recipe_id INTEGER NOT NULL,
                 ingredient_id INTEGER NOT NULL,
-                quantity TEXT NOT NULL,
-                measurement TEXT,
+                quantity VARCHAR NOT NULL,
+                measurement VARCHAR,
                 PRIMARY KEY (recipe_id, ingredient_id),
                 FOREIGN KEY (recipe_id) REFERENCES recipes (recipe_id),
                 FOREIGN KEY (ingredient_id) REFERENCES ingredients (ingredient_id)
@@ -141,7 +142,7 @@ class Category(db.Database):
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS categories (
                 category_id INTEGER PRIMARY KEY,
-                name TEXT UNIQUE NOT NULL
+                category_name VARCHAR UNIQUE NOT NULL
             )
         """)
 

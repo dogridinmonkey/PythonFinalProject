@@ -10,19 +10,21 @@ class Database:
     def populate_from_csv(self, table, csv_file):
         with open(csv_file, newline='') as f:
             reader = csv.reader(f)
-            header = True
+            fields = next(reader)  # Get the column names from the first row
             for row in reader:
-                if header:
-                    header = False
-                    continue
-                self.create_record(table, row, row)
+                # Only include values for which there is a corresponding field
+                values = [value for field, value in zip(fields, row) if field]
+                self.create_record(table, fields, values)
 
     def create_record(self, table, fields, values):
+        sql = f"""
+            INSERT INTO {table} ({', '.join(fields)})
+            VALUES ({', '.join(['?' for _ in values])})
+        """
+        # print(f"SQL: {sql}")
+        # print(f"Values: {values}")
         try:
-            self.cursor.execute(f"""
-                INSERT INTO {table} ({', '.join(fields)})
-                VALUES ({', '.join(['?' for _ in values])})
-            """, values)
+            self.cursor.execute(sql, values)
             self.conn.commit()
             print(f"\nRecord added successfully: {values[0]}")
         except sqlite3.IntegrityError:
@@ -83,32 +85,31 @@ class Database:
         self.cursor.execute("""
             CREATE TABLE categories (
                 category_id INTEGER PRIMARY KEY,
-                category_name TEXT UNIQUE NOT NULL,
-                category_description TEXT
+                category_name VARCHAR UNIQUE NOT NULL
             );
         """)
         self.cursor.execute("""
             CREATE TABLE ingredients (
                 ingredient_id INTEGER PRIMARY KEY,
-                name TEXT UNIQUE NOT NULL
+                name VARCHAR UNIQUE NOT NULL
             );
         """)
         self.cursor.execute("""
             CREATE TABLE users (
                 user_id INTEGER PRIMARY KEY,
-                username TEXT UNIQUE NOT NULL,
-                password TEXT NOT NULL,
-                email TEXT UNIQUE NOT NULL
+                username VARCHAR UNIQUE NOT NULL,
+                password VARCHAR NOT NULL,
+                email VARCHAR UNIQUE NOT NULL
             );
         """)
         self.cursor.execute("""
             CREATE TABLE recipes (
                 recipe_id INTEGER PRIMARY KEY,
-                name TEXT UNIQUE NOT NULL,
-                instructions TEXT,
+                name VARCHAR UNIQUE NOT NULL,
+                instructions VARCHAR,
                 prep_time INTEGER,
                 cook_time INTEGER,
-                image_url TEXT,
+                image_url VARCHAR,
                 category_id INTEGER,
                 FOREIGN KEY(category_id) REFERENCES categories(category_id)
             );
